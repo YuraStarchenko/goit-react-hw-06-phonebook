@@ -32,3 +32,9 @@ export const Btn = styled.button`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   }
 `;
+
+export const Text = styled.p`
+  font-weight: 500;
+  font-size: 14px;
+  margin-right: 10px;
+`;

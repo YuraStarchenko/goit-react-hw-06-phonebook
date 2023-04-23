@@ -1,19 +1,20 @@
-import PropTypes from 'prop-types';
 import { Input } from './Filter.styled.js';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filterSlice';
 
-export const Filter = ({ filter, onChange }) => {
-	return (
-      <Input
-        type="text"
-        name="filter"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        value={filter}
-        onChange={onChange}
-      />
+export const Filter = () => {
+  const dispatch = useDispatch();
+	const filter = useSelector(state => state.filter.filter);
+	
+	const handleFilterContact = e => {
+    dispatch(setFilter(e.currentTarget.value));
+  };
+
+  return (
+    <Input
+      type="text"
+      value={filter}
+      onChange={handleFilterContact}
+    />
   );
-};
-
-Filter.propTypes = {
-  filter: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
